@@ -70,7 +70,4 @@ class Project(base_orm.BaseORM):
         Returns a list of all label row IDs (label_hash uid) in a project.
         """
         labels = self.to_dic().get('label_rows')
-        res = []
-        for label in labels:
-            res.append(label.get('label_hash'))
-        return res
+        return [label.get('label_hash') for label in labels]

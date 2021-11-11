@@ -85,5 +85,3 @@ def check_error_response(response, payload=None):
             "Trying to create a resource that already exists."
             "Label hash for this data is: " + str(payload)
         )
-
-    pass

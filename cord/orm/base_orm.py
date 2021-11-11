@@ -70,13 +70,12 @@ class BaseORM(dict):
         :param name:
         :return:
         """
-        if name in self:
-            try:
-                return self[name]
-            except KeyError:
-                return None
-        else:
+        if name not in self:
             raise AttributeError("Attribute does not exist: {}".format(name))
+        try:
+            return self[name]
+        except KeyError:
+            return None
 
     def __setattr__(self, name, value):
         """
@@ -104,10 +103,7 @@ class BaseORM(dict):
         :param db_field:
         :return:
         """
-        temp_dict = {}
-        for i, attribute in enumerate(db_field):
-            temp_dict[attribute] = row[i]
-        return temp_dict
+        return {attribute: row[i] for i, attribute in enumerate(db_field)}
 
     def to_dic(self, time_str=True):
         """
