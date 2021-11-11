@@ -829,10 +829,7 @@ class CordClientProject(CordClient):
         return video, images
 
     def get_websocket_url(self) -> str:
-        return f'{self._config.websocket_endpoint}?' \
-               f'client_type={2}&' \
-               f'project_hash={self._config.resource_id}&' \
-               f'api_key={self._config.api_key}'
+        return f'{self._config.websocket_endpoint}?client_type=2&project_hash={self._config.resource_id}&api_key={self._config.api_key}'
 
     def get_label_logs(self, user_hash: str = None, data_hash: str = None, from_unix_seconds: int = None,
                        to_unix_seconds: int = None) -> List[LabelLog]:
